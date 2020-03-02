@@ -5,7 +5,7 @@ strict=''
 schema=${INPUT_SCHEMA:-$1}
 target=${INPUT_VALIDATION:-$2}
 
-if [ -n "${INPUT_STRICT:-''}" ]
+if [ -n "${INPUT_STRICT:-}" ]
 then
   strict='--strict'
 fi
