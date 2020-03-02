@@ -4,14 +4,12 @@ A GitHub action that uses [Yamale][] for YAML schema validation.
 
 ## Usage
 
-Configure a new workflow in your project referencing this repository.
-The following example sets up a check to validate the file *target.yaml*
-using the Yamale schema defined in *schemas/schema.yaml* within the target
-repository.
-
 - Filenames are relative to the repository root.
 - Enable strict checking by setting `strict` to a non-empty string.
-- For help with the schema definitions, see [Yamale][].
+- For help with the schema definitions and reference, see [Yamale][].
+
+The following example sets up a check to validate a YAML file in your
+repository, *target.yaml*, using a schema defined in *schemas/schema.yaml*:
 
 ```
 name: YAML schema validator
