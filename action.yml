@@ -1,5 +1,5 @@
 name: 'YAML schema validation'
-description: 'Schema validation using Yamale'
+description: 'YAML schema validation using https://github.com/23andMe/Yamale'
 author: stigok
 branding:
   icon: 'file-text'
