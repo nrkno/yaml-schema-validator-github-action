@@ -1,0 +1,19 @@
+name: 'YAML schema validation'
+description: 'Schema validation using Yamale'
+author: stigok
+branding:
+  icon: 'file-text'
+  color: 'blue'
+inputs:
+  schema:
+    description: 'Yamale schema file'
+    required: true
+  target:
+    description: 'File to validate'
+    required: true
+  strict:
+    description: 'Enable strict mode. Set to a non-zero length string to enable.'
+    required: false
+runs:
+  using: 'docker'
+  image: 'Dockerfile'
