@@ -1,11 +1,19 @@
 #!/bin/bash
-set -ex
+set -eux
 
 strict=''
+schema=${INPUT_SCHEMA:-$1}
+target=${INPUT_VALIDATION:-$2}
 
-if [ -n "${INPUT_STRICT}" ]
+if [ -n "${INPUT_STRICT:-''}" ]
 then
   strict='--strict'
 fi
 
-yamale --schema ${INPUT_SCHEMA:-$1} ${INPUT_VALIDATION:-$2} $strict
+if [ ! -e $target ]
+then
+  >&2 echo "Target does not exist: $target"
+  exit 1
+fi
+
+yamale --schema=${schema} $target $strict
