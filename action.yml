@@ -12,7 +12,7 @@ inputs:
     description: 'File to validate'
     required: true
   strict:
-    description: 'Enable strict mode. Set to a non-zero length string to enable.'
+    description: 'Enable strict mode. Set to a non-empty string to enable.'
     required: false
 runs:
   using: 'docker'
