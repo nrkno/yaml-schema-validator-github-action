@@ -20,13 +20,20 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v2
-    - uses: nrkno/yaml-schema-validator-github-action@v0.0.1-pre
+    - uses: nrkno/yaml-schema-validator-github-action@master
       with:
         schema: 'schemas/schema.yaml'
         target: 'target.yaml'
         # Uncomment to enable strict checks
         # strict: '1'
 ```
+
+### Versioning
+
+To bind the action to a specific release, prefix with `@<tag>`.
+E.g. `nrkno/yaml-schema-validator-github-action@v0.1.0`.
+
+https://help.github.com/en/actions/reference/workflow-syntax-for-github-actions#jobsjob_idstepsuses
 
 ## Developing
 
