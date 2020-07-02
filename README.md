@@ -64,6 +64,7 @@ Build the container and reference files within the example/ folder.
 ```
 $ docker build -t yaml-schema-validator .
 $ docker run yaml-schema-validator example/schema.yaml example/file.yaml
+$ docker run yaml-schema-validator example/schema.yaml example/file-invalid.yaml
 ```
 
 

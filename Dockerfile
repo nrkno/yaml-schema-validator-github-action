@@ -9,6 +9,8 @@ RUN pip install -r requirements.txt
 
 COPY example/ ./example
 
-USER nobody:nogroup
+# Nonexistent
+USER 2000:2000
+
 COPY entrypoint.sh /entrypoint.sh
 ENTRYPOINT ["/entrypoint.sh"]
