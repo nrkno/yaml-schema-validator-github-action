@@ -1,0 +1,30 @@
+name: Action tests
+
+on:
+  push: {}
+  pull_request: {}
+
+jobs:
+  schema:
+    name: Run tests
+    runs-on: ubuntu-latest
+
+    strategy:
+      fail-fast: false
+      matrix:
+        test:
+          - schema: ./tests/nostrict/schema.yaml
+            target: ./tests/nostrict/valid-file-1.yaml
+          - schema: ./tests/nostrict/schema.yaml
+            target: ./tests/nostrict/valid-file-2.yaml
+          #- '{"schema": "./tests/nostrict/schema.yaml", "target": "./tests/nostrict/valid-file-1.yaml"}'
+          #- '{"schema": "./tests/nostrict/schema.yaml", "target": "./tests/nostrict/valid-file-2.yaml"}'
+
+    steps:
+    - uses: actions/checkout@v2
+    - uses: ./
+      with:
+        schema: ${{ matrix.test.schema }}
+        target: ${{ matrix.test.target }}
+        #schema: ${{ fromJSON(matrix.test).schema }}
+        #target: ${{ fromJSON(matrix.test).target }}
