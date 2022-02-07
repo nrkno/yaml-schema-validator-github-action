@@ -1,8 +1,14 @@
 name: Action tests
 
 on:
-  push: {}
-  pull_request: {}
+  push:
+    branches:
+      - master
+      - main
+  pull_request:
+    branches:
+      - master
+      - main
 
 jobs:
   schema:
