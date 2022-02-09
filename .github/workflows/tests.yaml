@@ -1,0 +1,64 @@
+name: Action tests
+
+on:
+  push:
+    branches:
+      - master
+      - main
+  pull_request:
+    branches:
+      - master
+      - main
+
+jobs:
+  schema:
+    name: Run tests
+    runs-on: ubuntu-latest
+
+    strategy:
+      fail-fast: false
+      matrix:
+        test:
+          # Strict
+          - suite: nostrict
+            schema: ./tests/nostrict/schema.yaml
+            target: ./tests/nostrict/valid-matching-fields.yaml
+            no-strict: true
+            error-is-success: false
+          - suite: nostrict
+            schema: ./tests/nostrict/schema.yaml
+            target: ./tests/nostrict/valid-extra-argument.yaml
+            no-strict: true
+            error-is-success: false
+          - suite: nostrict
+            schema: ./tests/nostrict/schema.yaml
+            target: ./tests/nostrict/invalid-not-a-boolean.yaml
+            no-strict: true
+            error-is-success: true
+          - suite: nostrict
+            schema: ./tests/nostrict/schema.yaml
+            target: ./tests/nostrict/invalid-nums-out-of-range.yaml
+            no-strict: true
+            error-is-success: true
+
+          # Nostrict
+          - suite: strict
+            schema: ./tests/strict/schema.yaml
+            target: ./tests/strict/valid-matching-fields.yaml
+            no-strict: false
+            error-is-success: false
+          - suite: strict
+            schema: ./tests/strict/schema.yaml
+            target: ./tests/strict/invalid-extra-argument.yaml
+            no-strict: false
+            error-is-success: true
+
+    steps:
+    - uses: actions/checkout@v2
+    - uses: ./
+      name: "Test: ${{ matrix.test.suite }} ${{ matrix.test.target }}"
+      with:
+        schema: ${{ matrix.test.schema }}
+        target: ${{ matrix.test.target }}
+        no-strict: ${{ matrix.test.no-strict }}
+        error-is-success: ${{ matrix.test.error-is-success }}
