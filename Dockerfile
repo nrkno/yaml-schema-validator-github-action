@@ -15,6 +15,5 @@ ENV VIRTUAL_ENV=/usr/src/app/venv \
 COPY requirements.txt ./
 RUN pip install -r requirements.txt
 
-COPY example/ ./example
 COPY entrypoint.sh /entrypoint.sh
 ENTRYPOINT ["/entrypoint.sh"]
