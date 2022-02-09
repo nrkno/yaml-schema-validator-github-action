@@ -1,6 +1,8 @@
 #!/bin/bash
 set -eux
 
+echo '::warning::The version nrkno/yaml-schema-validator-github-action@master is a deprecated version of this action which contains a security vulnerability. Please update to nrkno/yaml-schema-validator-github-action@v4 and check out the repository for more information.'
+
 strict=''
 schema=${INPUT_SCHEMA:-$1}
 target=${INPUT_TARGET:-$2}
