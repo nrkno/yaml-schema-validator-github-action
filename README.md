@@ -4,12 +4,11 @@ A GitHub action that uses [Yamale][] for YAML schema validation.
 
 ## Usage
 
-- Filenames are relative to the repository root.
-- Disable strict checking by setting `no-strict` to `true`, `1` or `yes`.
+- Disable strict checking by setting `no-strict` to `true`.
 - For help with the schema definitions and reference, see [Yamale][].
 
-The following example sets up a check to validate a YAML file in your
-repository, *target.yaml*, using a schema defined in *schemas/schema.yaml*:
+The following example sets up a check to validate all YAML files in your
+repository sibling to a `schema.yaml`:
 
 ```
 name: YAML schema validator
@@ -22,8 +21,6 @@ jobs:
     - uses: actions/checkout@v2
     - uses: nrkno/yaml-schema-validator-github-action@v4
       with:
-        schema: schemas/schema.yaml
-        target: target.yaml
         # Uncomment to disable strict checks
         # no-strict: true
 ```
@@ -56,9 +53,7 @@ $ pip install -r requirements.txt
 Do a test-run with one of the provided examples
 
 ```
-$ INPUT_SCHEMA=example/schema.yaml \
-  INPUT_TARGET=example/file-valid-strict.yaml \
-  ./entrypoint.sh
+$ ./entrypoint.sh
 ```
 
 [Yamale]: https://github.com/23andMe/Yamale
