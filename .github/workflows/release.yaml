@@ -14,3 +14,6 @@ jobs:
     uses: nrkno/github-workflow-semantic-release/.github/workflows/workflow.yaml@v2.0.0
     with:
       runs-on: ubuntu-latest
+      # Since we are following the Yamale major version scheme, we don't want
+      # to accidentally release a new major version.
+      release-enabled: false
