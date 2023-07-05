@@ -1,0 +1,16 @@
+name: Semantic release
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  commitlint_and_release:
+    name: Commit lint and release
+    uses: nrkno/github-workflow-semantic-release/.github/workflows/workflow.yaml@v2.0.0
+    with:
+      runs-on: ubuntu-latest
