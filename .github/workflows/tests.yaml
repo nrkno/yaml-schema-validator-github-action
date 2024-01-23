@@ -68,7 +68,8 @@ jobs:
           # glob pattern
           - suite: glob-pattern
             schema: ./schema/schema.yaml
-            path-glob: "./tests/**/valid/*.yaml"
+            target-path-glob: "./tests/**/valid/*.yaml"
+            no-strict: true
 
     steps:
     - uses: actions/checkout@v4.1.1
@@ -77,5 +78,6 @@ jobs:
       with:
         schema: ${{ matrix.test.schema }}
         target: ${{ matrix.test.target }}
+        target-path-glob: ${{ matrix.test.target-path-glob }}
         no-strict: ${{ matrix.test.no-strict }}
         error-is-success: ${{ matrix.test.error-is-success }}
