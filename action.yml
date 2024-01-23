@@ -9,8 +9,11 @@ inputs:
     description: 'Yamale schema file'
     required: true
   target:
-    description: 'File to validate'
-    required: true
+    description: 'Comma separated list of file or directories to validate'
+    required: false
+  target-path-glob:
+    description: 'Path glob pattern of files or directories to validate'
+    required: false
   no-strict:
     description: 'Disable strict mode'
     required: false
@@ -24,5 +27,6 @@ runs:
     # Need to convert dashes to underscores in environment variable names for bash
     # to be able to read them.
     # Github Actions passes them like INPUT_NO-STRICT when they contain dashes.
+    INPUT_TARGET_PATH_GLOB: ${{ inputs.target-path-glob }}
     INPUT_NO_STRICT: ${{ inputs.no-strict }}
     INPUT_ERROR_IS_SUCCESS: ${{ inputs.error-is-success }}

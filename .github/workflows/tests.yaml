@@ -20,38 +20,55 @@ jobs:
       matrix:
         test:
           # Strict
-          - suite: nostrict
-            schema: ./tests/nostrict/schema.yaml
-            target: ./tests/nostrict/valid-matching-fields.yaml
+          - suite: strict
+            schema: ./schema/schema.yaml
+            target: ./tests/nostrict/valid/matching-fields.yaml
             no-strict: true
             error-is-success: false
-          - suite: nostrict
-            schema: ./tests/nostrict/schema.yaml
-            target: ./tests/nostrict/valid-extra-argument.yaml
+          - suite: strict
+            schema: ./schema/schema.yaml
+            target: ./tests/nostrict/valid/extra-argument.yaml
             no-strict: true
             error-is-success: false
-          - suite: nostrict
-            schema: ./tests/nostrict/schema.yaml
-            target: ./tests/nostrict/invalid-not-a-boolean.yaml
+          - suite: strict
+            schema: ./schema/schema.yaml
+            target: ./tests/nostrict/invalid/not-a-boolean.yaml
             no-strict: true
             error-is-success: true
-          - suite: nostrict
-            schema: ./tests/nostrict/schema.yaml
-            target: ./tests/nostrict/invalid-nums-out-of-range.yaml
+          - suite: strict
+            schema: ./schema/schema.yaml
+            target: ./tests/nostrict/invalid/nums-out-of-range.yaml
             no-strict: true
             error-is-success: true
 
           # Nostrict
-          - suite: strict
-            schema: ./tests/strict/schema.yaml
-            target: ./tests/strict/valid-matching-fields.yaml
+          - suite: nostrict
+            schema: ./schema/schema.yaml
+            target: ./tests/strict/valid/matching-fields.yaml
             no-strict: false
             error-is-success: false
-          - suite: strict
-            schema: ./tests/strict/schema.yaml
-            target: ./tests/strict/invalid-extra-argument.yaml
+          - suite: nostrict
+            schema: ./schema/schema.yaml
+            target: ./tests/strict/invalid/extra-argument.yaml
             no-strict: false
             error-is-success: true
+
+          # Comma separated
+          - suite: comma-separated
+            schema: ./schema/schema.yaml
+            target: tests/nostrict/valid,tests/strict/valid
+            no-strict: true
+            error-is-success: false
+          - suite: comma-separated
+            schema: ./schema/schema.yaml
+            target: ./tests/nostrict/valid/extra-argument.yaml,./tests/strict/valid/matchin-fields.yaml
+            no-strict: true
+            error-is-success: false
+
+          # glob pattern
+          - suite: glob-pattern
+            schema: ./schema/schema.yaml
+            path-glob: "./tests/**/valid/*.yaml"
 
     steps:
     - uses: actions/checkout@v4.1.1

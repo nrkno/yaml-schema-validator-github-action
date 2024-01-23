@@ -11,7 +11,7 @@ A GitHub action that uses [Yamale][] for YAML schema validation.
 The following example sets up a check to validate a YAML file in your
 repository, *target.yaml*, using a schema defined in *schemas/schema.yaml*:
 
-```
+```yaml
 name: YAML schema validator
 on: [push]
 
@@ -24,6 +24,8 @@ jobs:
       with:
         schema: schemas/schema.yaml
         target: target.yaml
+        # and/or use (optional)
+        target-glob-path: a/glob/**/pattern/.yaml
         # Uncomment to disable strict checks
         # no-strict: true
 ```
@@ -36,28 +38,36 @@ of Yamale, this action will follow Yamale's major version scheme.
 To bind the action to a specific release, suffix with `@<tag>`.
 E.g. `nrkno/yaml-schema-validator-github-action@v4`.
 
-https://help.github.com/en/actions/reference/workflow-syntax-for-github-actions#jobsjob_idstepsuses
+<https://help.github.com/en/actions/reference/workflow-syntax-for-github-actions#jobsjob_idstepsuses>
 
 ## Developing
 
 Create and enable a Python virtualenv
 
-```
-$ python -m venv venv
-$ source venv/bin/activate
+```shell
+python -m venv venv
+source venv/bin/activate
 ```
 
 Install dependencies
 
-```
-$ pip install -r requirements.txt
+```shell
+pip install -r requirements.txt
 ```
 
 Do a test-run with one of the provided examples
 
-```
+```shell
 $ INPUT_SCHEMA=example/schema.yaml \
   INPUT_TARGET=example/file-valid-strict.yaml \
+  ./entrypoint.sh
+```
+
+If you want to use a path glob pattern use
+
+```shell
+$ INPUT_SCHEMA=example/schema.yaml \
+  INPUT_TARGET_PATH_GLOB=example/*.yaml \
   ./entrypoint.sh
 ```
 
