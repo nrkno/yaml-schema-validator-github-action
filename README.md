@@ -19,8 +19,8 @@ jobs:
   yaml-schema-validation:
     runs-on: ubuntu-latest
     steps:
-    - uses: actions/checkout@v2
-    - uses: nrkno/yaml-schema-validator-github-action@v4
+    - uses: actions/checkout
+    - uses: nrkno/yaml-schema-validator-github-action@v5
       with:
         schema: schemas/schema.yaml
         target: target.yaml
