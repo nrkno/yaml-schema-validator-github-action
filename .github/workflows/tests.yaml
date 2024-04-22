@@ -54,7 +54,7 @@ jobs:
             error-is-success: true
 
     steps:
-    - uses: actions/checkout@v4.1.2
+    - uses: actions/checkout@v4.1.3
     - uses: ./
       name: "Test: ${{ matrix.test.suite }} ${{ matrix.test.target }}"
       with:
