@@ -1,25 +1,25 @@
-name: 'YAML schema validation'
-description: 'YAML schema validation using https://github.com/23andMe/Yamale'
+name: "YAML schema validation"
+description: "YAML schema validation using https://github.com/23andMe/Yamale"
 author: stigok
 branding:
-  icon: 'file-text'
-  color: 'blue'
+  icon: "file-text"
+  color: "blue"
 inputs:
   schema:
-    description: 'Yamale schema file'
+    description: "Yamale schema file"
     required: true
   target:
-    description: 'File to validate'
+    description: "File to validate"
     required: true
   no-strict:
-    description: 'Disable strict mode'
+    description: "Disable strict mode"
     required: false
   error-is-success:
-    description: 'Flip the validation logic making a failing test pass and a passing test fail. This is used internally for testing the action itself.'
+    description: "Flip the validation logic making a failing test pass and a passing test fail. This is used internally for testing the action itself."
     required: false
 runs:
-  using: 'docker'
-  image: 'Dockerfile'
+  using: "docker"
+  image: "docker://ghcr.io/nrkno/yaml-schema-validator-github-action:v6.1.0"
   env:
     # Need to convert dashes to underscores in environment variable names for bash
     # to be able to read them.

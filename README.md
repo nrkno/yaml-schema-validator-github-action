@@ -62,3 +62,12 @@ $ INPUT_SCHEMA=example/schema.yaml \
 ```
 
 [Yamale]: https://github.com/23andMe/Yamale
+
+
+# Releasing
+
+Releases are created manually, with the release version matching your yamale version in `requirements.txt`.
+ 1. Update the version tag in the "docker.yaml" github workflow, and "requirements.txt".
+ 2. Make a pull request
+ 3. When the pull request is merged, "docker.yaml" will run and publish a new docker image to ghcr.
+ 4. Make a release with the same version.
