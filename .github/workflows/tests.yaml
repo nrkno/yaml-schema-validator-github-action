@@ -1,13 +1,8 @@
 name: Action tests
 
 on:
-  push:
-    branches:
-      - master
-      - main
   pull_request:
     branches:
-      - master
       - main
 
 jobs:
@@ -55,6 +50,11 @@ jobs:
 
     steps:
     - uses: actions/checkout@v4.2.2
+
+    - name: Use Dockerfile action for local
+      run: |
+        sed -i 's|image: "docker://[^"]*"|image: "Dockerfile"|' action.yml
+
     - uses: ./
       name: "Test: ${{ matrix.test.suite }} ${{ matrix.test.target }}"
       with:
