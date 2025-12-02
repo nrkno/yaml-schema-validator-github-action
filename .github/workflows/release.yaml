@@ -8,7 +8,7 @@ on:
 jobs:
   commitlint_and_release:
     name: Commit lint and release
-    uses: nrkno/github-workflow-semantic-release/.github/workflows/workflow.yaml@v3.1.1
+    uses: nrkno/github-workflow-semantic-release/.github/workflows/workflow.yaml@v4.3.0
     with:
       runs-on: ubuntu-latest
       # Since we are following the Yamale major version scheme, we don't want
