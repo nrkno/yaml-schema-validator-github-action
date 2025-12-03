@@ -49,7 +49,7 @@ jobs:
             error-is-success: true
 
     steps:
-    - uses: actions/checkout@v4.2.2
+    - uses: actions/checkout@v6.0.1
 
     - name: Use Dockerfile action for local
       run: |
